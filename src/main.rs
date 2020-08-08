@@ -11,13 +11,9 @@ fn main() -> Result<(), Error> {
         Err(e) => return Err(e),
         Ok(sudoku_grid) => sudoku_grid
     };
-    println!("Sudoku grid loaded:");
-    sudoku::print_sudoku_grid(&sudoku_grid);
 
     let resolved_sudoku_grid = sudoku::resolve_sudoku_grid(&sudoku_grid);
-    println!("Sudoku grid resolved:");
     sudoku::print_sudoku_grid(&resolved_sudoku_grid);
     sudoku::write_sudoku_grid(&resolved_sudoku_grid, "sudoku_resolved.txt")?;
-   
     Ok(())
 }
