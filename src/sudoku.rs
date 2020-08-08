@@ -78,7 +78,7 @@ pub fn clone_sudoku_grid(sudoku_grid: &Vec<Vec<Cell>>) -> Vec<Vec<Cell>> {
     clone
 }
 
-fn clean_candidates(sudoku_grid: &mut Vec<Vec<Cell>>) {
+fn clean_candidates_by_lines_columns(sudoku_grid: &mut Vec<Vec<Cell>>) {
     for y in 0..sudoku_grid.len() {
         let mut line_values = Vec::new();
         for x in 0..sudoku_grid[y].len() {
@@ -95,6 +95,7 @@ fn clean_candidates(sudoku_grid: &mut Vec<Vec<Cell>>) {
                 }
                 if cell.candidates.len() == 1 {
                     println!("Value {} found at x:{},y:{}", cell.candidates[0], cell.x, cell.y);
+                    cell.value = cell.candidates[0];
                 }
             }
         }
@@ -116,6 +117,7 @@ fn clean_candidates(sudoku_grid: &mut Vec<Vec<Cell>>) {
                 }
                 if cell.candidates.len() == 1 {
                     println!("Value {} found at x:{},y:{}", cell.candidates[0], cell.x, cell.y);
+                    cell.value = cell.candidates[0];
                 }
             }
         }
@@ -124,7 +126,7 @@ fn clean_candidates(sudoku_grid: &mut Vec<Vec<Cell>>) {
 
 pub fn resolve_sudoku_grid(sudoku_grid: &Vec<Vec<Cell>>) -> Vec<Vec<Cell>> {
     let mut resolved_sudoku_grid: Vec<Vec<Cell>> = clone_sudoku_grid(&sudoku_grid);
-    clean_candidates(&mut resolved_sudoku_grid);
+    clean_candidates_by_lines_columns(&mut resolved_sudoku_grid);
 
     /*for y in 0..sudoku_grid.len() {
         for x in 0..sudoku_grid[y].len() {
