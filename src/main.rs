@@ -12,7 +12,7 @@ fn main() -> Result<(), Error> {
         Ok(sudoku_grid) => sudoku_grid
     };
 
-    let resolved_sudoku_grid = sudoku::resolve_sudoku_grid(&sudoku_grid);
+    let resolved_sudoku_grid = sudoku::resolve_sudoku_grid(sudoku_grid);
     sudoku::print_sudoku_grid(&resolved_sudoku_grid);
     sudoku::write_sudoku_grid(&resolved_sudoku_grid, "sudoku_resolved.txt")?;
     Ok(())
