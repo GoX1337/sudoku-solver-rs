@@ -196,10 +196,10 @@ fn is_valid_cell_value(sudoku_grid: Vec<Vec<Cell>>, cell: &mut Cell, value: u8) 
                     }
                 }
                 if box_values.contains(&&value) {
-                    println!("cell: {:?}, i:{}, j:{}, box: {:?}, value {} is NOT valid", cell, i, j, box_values, value);
+                    //println!("cell: {:?}, i:{}, j:{}, box: {:?}, value {} is NOT valid", cell, i, j, box_values, value);
                     return false;
                 } else {
-                    println!("cell: {:?}, box: {:?}, value {} is valid", cell, box_values, value);
+                    //println!("cell: {:?}, box: {:?}, value {} is valid", cell, box_values, value);
                 }
             }
             i = i + 3;
@@ -222,7 +222,6 @@ fn start_bruteforce_sudoku(sudoku_grid: &mut Vec<Vec<Cell>>) {
                 let mut c = sudoku_grid[y][x].candidate_index;
                 if backtraking {
                     c = c + 1;
-                    backtraking = false;
                 }
                 let mut value = 0;
                 let mut candidate_valid = false;
@@ -237,7 +236,7 @@ fn start_bruteforce_sudoku(sudoku_grid: &mut Vec<Vec<Cell>>) {
                 }
                 let cell = &mut sudoku_grid[y][x];
                 if candidate_valid {
-                    println!("{:?}, value: {} is a valid candidate", cell, value);
+                    //println!("{:?}, value: {} is a valid candidate", cell, value);
                     i = 0;
                     last_tested_cells.push_back(cell.clone());
                     cell.value = value;
@@ -252,7 +251,7 @@ fn start_bruteforce_sudoku(sudoku_grid: &mut Vec<Vec<Cell>>) {
                         Some(last_cell) => {
                             x = last_cell.x as usize;
                             y = last_cell.y as usize;
-                            println!("{:?}, no candidate found. Go to last empty cell x:{}", cell, x);
+                            //println!("{:?}, no candidate found. Go to last empty cell x:{}", cell, x);
                         },
                         None => return
                     };
